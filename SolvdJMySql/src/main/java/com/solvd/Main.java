@@ -2,8 +2,8 @@ package com.solvd;
 
 import com.solvd.dao.ICustomerDao;
 import com.solvd.dao.IPhoneDao;
-import com.solvd.dao.jdbc.CustomerDao;
-import com.solvd.dao.jdbc.PhoneDao;
+import com.solvd.dao.CustomerDao;
+import com.solvd.dao.PhoneDao;
 import com.solvd.model.Customer;
 import com.solvd.model.Phone;
 
@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
+        //-------DAO-------
         ICustomerDao customerDao = new CustomerDao();
         IPhoneDao phoneDao = new PhoneDao();
 

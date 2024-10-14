@@ -1,4 +1,4 @@
-package com.solvd.dao.jdbc;
+package com.solvd.dao;
 
 import com.solvd.BasicConnectionPool;
 import com.solvd.dao.ICustomerDao;
