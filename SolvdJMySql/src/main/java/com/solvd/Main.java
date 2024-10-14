@@ -60,6 +60,12 @@ public class Main {
 
         executorService.shutdown();
 
+        //-------XML-------
+        String xmlPath = "/phones.xml";
+        String xsdPath = "/phones.xsd";
 
+        XMLValidator.validateXMLSchema(xmlPath, xsdPath);
+        XMLParser xmlParser = new XMLParser();
+        xmlParser.parseXML(xmlPath);
     }
 }
