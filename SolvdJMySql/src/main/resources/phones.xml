@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phones>
+    <phone>
+        <brand>Apple</brand>
+        <model>iPhone 15</model>
+        <price>999.99</price>
+        <releaseDate>2023-09-20</releaseDate>
+    </phone>
+    <phone>
+        <brand>Samsung</brand>
+        <model>Galaxy S23</model>
+        <price>799.99</price>
+        <releaseDate>2023-08-15</releaseDate>
+    </phone>
+</phones>
