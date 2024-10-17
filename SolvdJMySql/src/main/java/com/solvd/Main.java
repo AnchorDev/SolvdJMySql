@@ -5,14 +5,24 @@ import com.solvd.dao.IPhoneDao;
 import com.solvd.dao.CustomerDao;
 import com.solvd.dao.PhoneDao;
 import com.solvd.model.Customer;
+import com.solvd.model.Customers;
 import com.solvd.model.Phone;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException, IOException {
         //-------DAO-------
         ICustomerDao customerDao = new CustomerDao();
         IPhoneDao phoneDao = new PhoneDao();
@@ -68,5 +78,17 @@ public class Main {
         XMLValidator.validateXMLSchema(xmlPath, xsdPath);
         XMLParser xmlParser = new XMLParser();
         xmlParser.parseXML(xmlPath);
+
+        //-------DateXML-------
+        System.out.println("-------DateXML-------");
+
+        Customers customersFromXML = unmarshalCustomers();
+        System.out.println("Unmarshalled Customers: " + customersFromXML);
+    }
+
+    public static Customers unmarshalCustomers() throws JAXBException, IOException {
+        JAXBContext context = JAXBContext.newInstance(Customers.class);
+        return (Customers) context.createUnmarshaller()
+                .unmarshal(new FileReader("customers.xml"));
     }
 }

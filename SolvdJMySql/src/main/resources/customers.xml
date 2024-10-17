@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customers>
+    <customer customerId="1">
+        <fullName>John Doe</fullName>
+        <email>john.doe@email.com</email>
+        <phone>555987654</phone>
+        <registrationDate>2024/October/17</registrationDate>
+    </customer>
+    <customer customerId="2">
+        <fullName>Jane Smith</fullName>
+        <email>jane.smith@email.com</email>
+        <phone>555123123</phone>
+        <registrationDate>2024/October/17</registrationDate>
+    </customer>
+</customers>

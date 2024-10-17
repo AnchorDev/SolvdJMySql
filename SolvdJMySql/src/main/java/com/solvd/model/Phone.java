@@ -8,6 +8,7 @@ public class Phone {
     private int categoryId;
     private int supplierId;
 
+
     public int getPhoneId() {
         return phoneId;
     }
