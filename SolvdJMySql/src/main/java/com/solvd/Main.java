@@ -14,6 +14,7 @@ import jakarta.xml.bind.Marshaller;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -88,7 +89,13 @@ public class Main {
 
     public static Customers unmarshalCustomers() throws JAXBException, IOException {
         JAXBContext context = JAXBContext.newInstance(Customers.class);
-        return (Customers) context.createUnmarshaller()
-                .unmarshal(new FileReader("customers.xml"));
+
+        // Load XML file from resources
+        try (InputStream inputStream = Main.class.getResourceAsStream("/customers.xml")) {
+            if (inputStream == null) {
+                throw new IOException("File not found: customers.xml");
+            }
+            return (Customers) context.createUnmarshaller().unmarshal(inputStream);
+        }
     }
 }

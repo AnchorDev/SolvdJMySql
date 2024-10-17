@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <customers>
     <customer customerId="1">
-        <fullName>John Doe</fullName>
-        <email>john.doe@email.com</email>
+        <fullName>Jakub Kotwica</fullName>
+        <email>jakub.kotwica@email.com</email>
         <phone>555987654</phone>
         <registrationDate>2024/October/17</registrationDate>
     </customer>
