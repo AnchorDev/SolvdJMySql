@@ -21,5 +21,5 @@ public class Store {
 
     public Store() {}
 
-    // Gettery, settery, toString
+
 }
