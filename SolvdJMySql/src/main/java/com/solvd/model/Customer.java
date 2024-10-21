@@ -6,15 +6,37 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 @XmlType(propOrder = {"fullName", "email", "phone", "registrationDate"})
 public class Customer {
+    @JsonProperty("id")
     private int customerId;
+
+    @JsonProperty("full_name")
     private String fullName;
+
+    @JsonProperty("email")
     private String email;
+
+    @JsonProperty("phone")
     private String phone;
+
+    @JsonProperty("registration_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date registrationDate;
+
+    public Customer() {}
+    public Customer(int customerId, String fullName, String email, String phone, Date registrationDate) {
+        this.customerId = customerId;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.registrationDate = registrationDate;
+    }
 
     // Getters and setters
     public int getCustomerId() {

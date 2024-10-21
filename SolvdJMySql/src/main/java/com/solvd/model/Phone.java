@@ -1,12 +1,36 @@
 package com.solvd.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Phone {
+    @JsonProperty("phone_id")
     private int phoneId;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("price")
     private double price;
+
+    @JsonProperty("brand_id")
     private int brandId;
+
+    @JsonProperty("category_id")
     private int categoryId;
+
+    @JsonProperty("supplier_id")
     private int supplierId;
+
+    public Phone() {}
+
+    public Phone(int phoneId, String name, double price, int brandId, int categoryId, int supplierId) {
+        this.phoneId = phoneId;
+        this.name = name;
+        this.price = price;
+        this.brandId = brandId;
+        this.categoryId = categoryId;
+        this.supplierId = supplierId;
+    }
 
 
     public int getPhoneId() {
