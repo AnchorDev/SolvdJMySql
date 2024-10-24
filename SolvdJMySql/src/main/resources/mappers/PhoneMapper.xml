@@ -1,0 +1,27 @@
+<mapper namespace="com.solvd.dao.IPhoneDao">
+
+    <select id="getEntityById" resultType="com.solvd.model.Phone">
+        SELECT * FROM phonestore.Phones WHERE phone_id = #{id}
+    </select>
+
+    <select id="getEntities" resultType="com.solvd.model.Phone">
+        SELECT * FROM phonestore.Phones
+    </select>
+
+    <insert id="insert" parameterType="com.solvd.model.Phone">
+        INSERT INTO phonestore.Phones (name, price, brand_id, category_id, supplier_id)
+        VALUES (#{name}, #{price}, #{brandId}, #{categoryId}, #{supplierId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM phonestore.Phones WHERE phone_id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.solvd.model.Phone">
+        UPDATE phonestore.Phones
+        SET name = #{name}, price = #{price}, brand_id = #{brandId},
+        category_id = #{categoryId}, supplier_id = #{supplierId}
+        WHERE phone_id = #{phoneId}
+    </update>
+
+</mapper>

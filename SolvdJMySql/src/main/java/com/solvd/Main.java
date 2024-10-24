@@ -15,6 +15,9 @@ import com.solvd.model.Store;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.File;
 import java.io.FileReader;
@@ -31,9 +34,14 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) throws JAXBException, IOException {
-        //-------DAO-------
-        ICustomerDao customerDao = new CustomerDao();
-        IPhoneDao phoneDao = new PhoneDao();
+        //-------MyBatis Initialization-------
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //-------DAO with MyBatis-------
+        ICustomerDao customerDao = new CustomerDao(sqlSessionFactory);
+        IPhoneDao phoneDao = new PhoneDao(sqlSessionFactory);
 
         Customer newCustomer = new Customer();
         newCustomer.setFullName("Alice Johnson");
