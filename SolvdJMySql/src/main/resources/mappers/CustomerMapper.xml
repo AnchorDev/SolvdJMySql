@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.mapper.CustomerMapper">
+    <resultMap id="CustomerResultMap" type="com.solvd.model.Customer">
+        <id property="customerId" column="customer_id"/>
+        <result property="fullName" column="full_name"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+
+    <select id="getCustomerById" resultMap="CustomerResultMap">
+        SELECT * FROM Customers WHERE customer_id = #{id}
+    </select>
+
+    <select id="getAllCustomers" resultMap="CustomerResultMap">
+        SELECT * FROM Customers
+    </select>
+
+    <insert id="insertCustomer">
+        INSERT INTO Customers (full_name, email, phone) VALUES (#{fullName}, #{email}, #{phone})
+    </insert>
+
+    <update id="updateCustomer">
+        UPDATE Customers SET full_name = #{fullName}, email = #{email}, phone = #{phone} WHERE customer_id = #{customerId}
+    </update>
+
+    <delete id="deleteCustomer">
+        DELETE FROM Customers WHERE customer_id = #{id}
+    </delete>
+</mapper>
