@@ -11,23 +11,31 @@
         <result property="phone" column="phone"/>
     </resultMap>
 
+    <!-- Zapytanie SELECT dla pobierania klienta po ID -->
     <select id="getCustomerById" resultMap="CustomerResultMap">
-        SELECT * FROM Customers WHERE customer_id = #{id}
+        SELECT * FROM phonestore.Customers WHERE customer_id = #{id}
     </select>
 
+    <!-- Zapytanie SELECT dla pobierania wszystkich klientów -->
     <select id="getAllCustomers" resultMap="CustomerResultMap">
-        SELECT * FROM Customers
+        SELECT * FROM phonestore.Customers
     </select>
 
-    <insert id="insertCustomer">
-        INSERT INTO Customers (full_name, email, phone) VALUES (#{fullName}, #{email}, #{phone})
+    <!-- Zapytanie INSERT dla dodawania nowego klienta -->
+    <insert id="insertCustomer" parameterType="com.solvd.model.Customer">
+        INSERT INTO phonestore.Customers (full_name, email, phone)
+        VALUES (#{fullName}, #{email}, #{phone})
     </insert>
 
-    <update id="updateCustomer">
-        UPDATE Customers SET full_name = #{fullName}, email = #{email}, phone = #{phone} WHERE customer_id = #{customerId}
+    <!-- Zapytanie UPDATE dla aktualizacji istniejącego klienta -->
+    <update id="updateCustomer" parameterType="com.solvd.model.Customer">
+        UPDATE phonestore.Customers
+        SET full_name = #{fullName}, email = #{email}, phone = #{phone}
+        WHERE customer_id = #{customerId}
     </update>
 
-    <delete id="deleteCustomer">
-        DELETE FROM Customers WHERE customer_id = #{id}
+    <!-- Zapytanie DELETE dla usunięcia klienta -->
+    <delete id="deleteCustomer" parameterType="int">
+        DELETE FROM phonestore.Customers WHERE customer_id = #{id}
     </delete>
 </mapper>
